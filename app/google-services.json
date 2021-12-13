@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "240591613902",
+    "project_id": "dynasty-c7266",
+    "storage_bucket": "dynasty-c7266.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240591613902:android:49715855490b72158d459f",
+        "android_client_info": {
+          "package_name": "com.nauk0a.dynasty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240591613902-8out5mg6l5f8lptjkjpgm394jkh1a3e3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nauk0a.dynasty",
+            "certificate_hash": "1bc412c9eff9ad0efae003fd77767168f53dddd8"
+          }
+        },
+        {
+          "client_id": "240591613902-hve4i2lrpr02cp8pq1jmg980l5cgt3hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPqS7CruAS_F532S6ESbcohhJockVp6-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240591613902-hve4i2lrpr02cp8pq1jmg980l5cgt3hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
