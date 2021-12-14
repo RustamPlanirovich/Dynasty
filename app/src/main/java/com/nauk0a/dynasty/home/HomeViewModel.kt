@@ -15,6 +15,7 @@ sealed class MyState {
 class HomeViewModel(networkStatusTracker: NetworkStatusTracker) : ViewModel() {
 
 
+    //Создаем LiveData в которую приходят изменения о состоянии сети
     @ExperimentalCoroutinesApi
     val state =
         networkStatusTracker.networkStatus

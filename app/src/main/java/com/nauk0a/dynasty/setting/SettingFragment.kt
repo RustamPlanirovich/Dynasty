@@ -33,7 +33,7 @@ class SettingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = SettingFragmentBinding.inflate(inflater, container, false)
 
         return binding.root

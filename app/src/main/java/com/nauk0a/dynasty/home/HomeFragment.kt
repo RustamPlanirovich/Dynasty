@@ -22,14 +22,14 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class HomeFragment : Fragment() {
 
 
-    private val viewModel: HomeViewModel? = null
+    private var viewModel: HomeViewModel? = null
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         val viewModel: HomeViewModel by lazy {
             ViewModelProvider(
@@ -47,7 +48,7 @@ class HomeFragment : Fragment() {
                         return HomeViewModel(networkStatusTracker) as T
                     }
                 },
-            ).get(HomeViewModel::class.java)
+            )[HomeViewModel::class.java]
         }
 
 
@@ -63,7 +64,6 @@ class HomeFragment : Fragment() {
 
             }
         }
-
 
 
 //        when (isOnline(requireContext())) {
