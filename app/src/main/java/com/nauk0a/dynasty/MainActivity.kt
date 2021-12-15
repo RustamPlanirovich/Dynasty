@@ -17,9 +17,11 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nauk0a.dynasty.databinding.ActivityMainBinding
 import com.nauk0a.dynasty.utils.APP_ACTIVITY
+import com.nauk0a.dynasty.utils.ToastFun
 import java.util.concurrent.Executor
 
 class MainActivity : AppCompatActivity() {
+
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding
 
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         biometric()
 
-        if (BiometricManager.from(this).canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS){
+        if (BiometricManager.from(this).canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS) {
 
             binding?.biometricLoginButton?.setOnClickListener {
                 biometricPrompt.authenticate(promptInfo)
@@ -66,9 +68,6 @@ class MainActivity : AppCompatActivity() {
 //        bottomNav.menu.findItem(R.id.homeFragment).isEnabled = false
 
 
-
-
-
         NavigationUI.setupWithNavController(
             binding?.bottomNav!!,
             Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -84,11 +83,7 @@ class MainActivity : AppCompatActivity() {
                     errString: CharSequence
                 ) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Authentication error: $errString", Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    ToastFun("Authentication error: $errString")
                     binding?.textInfo?.isVisible = true
                     binding?.biometricLoginButton?.isVisible = true
                     binding?.display?.isVisible = false
@@ -108,11 +103,7 @@ class MainActivity : AppCompatActivity() {
                     binding?.textInfo?.isVisible = true
                     binding?.biometricLoginButton?.isVisible = true
                     binding?.display?.isVisible = false
-                    Toast.makeText(
-                        this@MainActivity, "Authentication failed",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    ToastFun("Authentication failed")
                 }
             })
 
