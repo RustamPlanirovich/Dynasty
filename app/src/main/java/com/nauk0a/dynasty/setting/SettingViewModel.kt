@@ -14,5 +14,7 @@ class SettingViewModel : ViewModel() {
 
     val darkThemeEnabled = MutableLiveData<Boolean>()
 
+    val sincFirebaseOnlain = MutableLiveData<Boolean>()
+
 
 }

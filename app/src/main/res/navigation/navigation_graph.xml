@@ -18,10 +18,19 @@
         android:id="@+id/noteFragment"
         android:name="com.nauk0a.dynasty.notes.NoteFragment"
         android:label="note_fragment"
-        tools:layout="@layout/note_fragment" />
+        tools:layout="@layout/note_fragment" >
+        <action
+            android:id="@+id/action_noteFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.nauk0a.dynasty.setting.SettingFragment"
         android:label="setting_fragment"
         tools:layout="@layout/setting_fragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.nauk0a.dynasty.notes.detailView.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment" />
 </navigation>

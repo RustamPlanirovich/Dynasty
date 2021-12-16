@@ -2,7 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_note_card_view"
     android:layout_width="match_parent"
+    android:layout_margin="8dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp">
 
@@ -29,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="14sp"
-            android:textColor="#494747"
+            android:text="same"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_name_tv"
@@ -40,7 +42,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:textColor="#494747"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/note_name_tv"

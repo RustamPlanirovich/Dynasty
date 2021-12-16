@@ -60,8 +60,6 @@ class HomeFragment : Fragment() {
             when (state) {
                 MyState.Fetched -> binding.noInternetConnection.visibility = View.GONE
                 MyState.Error -> binding.noInternetConnection.visibility = View.VISIBLE
-
-
             }
         }
 

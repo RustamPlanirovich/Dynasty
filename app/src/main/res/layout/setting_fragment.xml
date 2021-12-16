@@ -40,5 +40,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_biometric" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_firebase_sinc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#D2605A5A"
+            android:text="Синхронизовать с онлайн базой"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/biometric_login_switcher"
+            tools:ignore="MissingConstraints" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/onlain_sync_switcher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:checked="@={viewModel.sincFirebaseOnlain}"
+            android:text="Включить синхронизацию"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_firebase_sinc" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
