@@ -48,12 +48,21 @@ class SettingFragment : Fragment() {
 
 
         viewModel.darkThemeEnabled.value = prefs.getBoolean("APP_PREFERENCES_COUNTER", true)
+        viewModel.sincFirebaseOnlain.value = prefs.getBoolean("APP_PREFERENCES_SINC", false)
 
 
         viewModel.darkThemeEnabled.observe(viewLifecycleOwner, Observer {
             val editor = prefs.edit()
             editor.apply {
                 putBoolean("APP_PREFERENCES_COUNTER", it)
+                apply()
+            }
+        })
+
+        viewModel.sincFirebaseOnlain.observe(viewLifecycleOwner, Observer {
+            val editorsinc = prefs.edit()
+            editorsinc.apply {
+                putBoolean("APP_PREFERENCES_SINC", it)
                 apply()
             }
         })

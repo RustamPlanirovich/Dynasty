@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/activity_main.xml" value="0.2481536189069424" />
         <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/biometric_login_fragment.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/detail_fragment.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/home_fragment.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/note_fragment.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/note_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/layout/setting_fragment.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/administrator/AndroidStudioProjects/Dynasty3/app/src/main/res/menu/home_menu.xml" value="0.36666666666666664" />
       </map>

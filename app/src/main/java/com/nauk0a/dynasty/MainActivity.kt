@@ -3,22 +3,25 @@ package com.nauk0a.dynasty
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.nauk0a.dynasty.databinding.ActivityMainBinding
 import com.nauk0a.dynasty.utils.APP_ACTIVITY
 import com.nauk0a.dynasty.utils.ToastFun
+import com.nauk0a.dynasty.utils.db
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.Executor
+import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         prefs = getSharedPreferences("settings", Context.MODE_PRIVATE)
 
+        db = Firebase.firestore
 
 
         biometric()
@@ -56,11 +60,16 @@ class MainActivity : AppCompatActivity() {
                 biometricPrompt.authenticate(promptInfo)
             }
 
-
             val biometricLoginCheck = prefs.getBoolean("APP_PREFERENCES_COUNTER", true)
             when (biometricLoginCheck) {
                 true -> biometricPrompt.authenticate(promptInfo)
             }
+        }
+
+        val firebaseOnlainSinc = prefs.getBoolean("APP_PREFERENCES_SINC", false)
+        when(firebaseOnlainSinc){
+            true -> db.enableNetwork()
+            false -> db.disableNetwork()
         }
 
 
