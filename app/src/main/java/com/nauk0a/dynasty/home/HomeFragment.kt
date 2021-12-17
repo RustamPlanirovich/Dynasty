@@ -16,13 +16,16 @@ import androidx.navigation.findNavController
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.databinding.HomeFragmentBinding
 import com.nauk0a.dynasty.internet_connection.NetworkStatusTracker
+import com.nauk0a.dynasty.mainActivityPackage.MainViewModel
+import com.nauk0a.dynasty.mainActivityPackage.MyState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@ExperimentalCoroutinesApi
+
 class HomeFragment : Fragment() {
 
 
-    private var viewModel: HomeViewModel? = null
+    private val viewModel: HomeViewModel by activityViewModels()
+
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -39,34 +42,11 @@ class HomeFragment : Fragment() {
 
 //        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        val viewModel: HomeViewModel by lazy {
-            ViewModelProvider(
-                this,
-                object : ViewModelProvider.Factory {
-                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                        val networkStatusTracker = NetworkStatusTracker(requireActivity())
-                        return HomeViewModel(networkStatusTracker) as T
-                    }
-                },
-            )[HomeViewModel::class.java]
-        }
-
 
         binding.btnSetting.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_settingFragment)
         }
 
-        viewModel.state.observe(requireActivity()) { state ->
-            when (state) {
-                MyState.Fetched -> binding.noInternetConnection.visibility = View.GONE
-                MyState.Error -> binding.noInternetConnection.visibility = View.VISIBLE
-            }
-        }
-
-
-//        when (isOnline(requireContext())) {
-//            false -> binding.noInternetConnection.visibility = View.VISIBLE
-//        }
     }
 
     override fun onDestroy() {

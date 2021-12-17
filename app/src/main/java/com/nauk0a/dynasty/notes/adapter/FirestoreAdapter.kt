@@ -2,7 +2,7 @@ package com.nauk0a.dynasty.notes.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
-import com.nauk0a.dynasty.utils.ToastFun
+import com.nauk0a.dynasty.notes.Notes
 
 abstract class FirestoreAdapter<VH : RecyclerView.ViewHolder>(
     private val query: Query
@@ -22,7 +22,6 @@ abstract class FirestoreAdapter<VH : RecyclerView.ViewHolder>(
             registration!!.remove()
             registration = null
         }
-
         snapshots.clear()
     }
 
@@ -50,22 +49,29 @@ abstract class FirestoreAdapter<VH : RecyclerView.ViewHolder>(
     protected open fun onDocumentAdded(change: DocumentChange) {
         snapshots.add(change.newIndex, change.document)
         notifyItemInserted(change.newIndex)
+//        notifyDataSetChanged()
     }
 
     protected open fun onDocumentModified(change: DocumentChange) {
         if (change.oldIndex == change.newIndex) {
             snapshots[change.oldIndex] = change.document
+
             notifyItemChanged(change.oldIndex)
+//            notifyDataSetChanged()
         } else {
             snapshots.removeAt(change.oldIndex)
             snapshots.add(change.newIndex, change.document)
+
             notifyItemMoved(change.oldIndex, change.newIndex)
+//            notifyDataSetChanged()
         }
     }
 
     protected open fun onDocumentRemoved(change: DocumentChange) {
         snapshots.removeAt(change.oldIndex)
+
         notifyItemRemoved(change.oldIndex)
+//        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

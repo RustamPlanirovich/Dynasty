@@ -22,15 +22,38 @@
         <action
             android:id="@+id/action_noteFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_noteFragment_to_addNewNoteFragment"
+            app:destination="@id/addNewNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.nauk0a.dynasty.setting.SettingFragment"
         android:label="setting_fragment"
-        tools:layout="@layout/setting_fragment" />
+        tools:layout="@layout/setting_fragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.nauk0a.dynasty.notes.detailView.DetailFragment"
         android:label="detail_fragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+        <action
+            android:id="@+id/action_detailFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewNoteFragment"
+        android:name="com.nauk0a.dynasty.notes.addNote.AddNewNoteFragment"
+        android:label="add_new_note_fragment"
+        tools:layout="@layout/add_new_note_fragment" >
+        <action
+            android:id="@+id/action_addNewNoteFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
 </navigation>

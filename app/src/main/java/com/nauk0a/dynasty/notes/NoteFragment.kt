@@ -25,6 +25,9 @@ import com.nauk0a.dynasty.notes.detailView.DetailFragment
 import com.nauk0a.dynasty.utils.ToastFun
 import com.nauk0a.dynasty.utils.db
 import kotlinx.coroutines.*
+import android.content.ComponentName
+import android.provider.Settings
+
 
 class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
 
@@ -49,33 +52,21 @@ class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
         db = Firebase.firestore
 
 
-        val job = Job()
-        val uiScope = CoroutineScope(Dispatchers.Main + job)
+
         query = FirebaseFirestore.getInstance().collection("notes")
+
 
         adapter = NotesAdapter(query,this)
         binding.notesListRv.setHasFixedSize(true)
+//        binding.notesListRv.itemAnimator = null
         binding.notesListRv.adapter = adapter
-
         binding.addNewNoteBtn.setOnClickListener {
+            it.findNavController().navigate(R.id.action_noteFragment_to_addNewNoteFragment)
 
-            uiScope.launch(Dispatchers.IO) {
-                val city = hashMapOf(
-                    "title" to "Los Angeles1",
-                    "notetext" to "CA",
-                    "date" to System.currentTimeMillis()
-                )
+//            val panelIntent = Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)
+//            startActivity(panelIntent )
 
-                db.collection("notes").document()
-                    .set(city)
-                    .addOnSuccessListener {
-                        Log.d(
-                            "Hello",
-                            "DocumentSnapshot successfully written!"
-                        )
-                    }
-                    .addOnFailureListener { ex -> ToastFun("Error writing document $ex") }
-            }
+//
         }
     }
 
@@ -83,6 +74,15 @@ class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
         viewModel.dateToDetail.value = notes
         this.findNavController().navigate(R.id.action_noteFragment_to_detailFragment)
     }
+
+    override fun delCurrentItem(id: String) {
+        db.collection("notes").document(id)
+            .delete()
+//            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+//            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+
 
     override fun onStart() {
         super.onStart()

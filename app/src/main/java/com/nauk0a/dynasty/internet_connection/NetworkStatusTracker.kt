@@ -25,7 +25,7 @@ class NetworkStatusTracker(context: Context) {
     val networkStatus = callbackFlow {
         val networkStatusCallback = object : ConnectivityManager.NetworkCallback() {
             override fun onUnavailable() {
-                trySend(NetworkStatus.Unavailable)
+                trySend(NetworkStatus.Unavailable).isClosed
             }
 
             override fun onAvailable(network: Network) {
