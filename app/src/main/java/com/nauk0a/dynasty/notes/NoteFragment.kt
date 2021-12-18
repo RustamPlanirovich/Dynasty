@@ -1,32 +1,22 @@
 package com.nauk0a.dynasty.notes
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.databinding.NoteFragmentBinding
 import com.nauk0a.dynasty.notes.adapter.NotesAdapter
-import com.nauk0a.dynasty.notes.detailView.DetailFragment
-import com.nauk0a.dynasty.utils.ToastFun
 import com.nauk0a.dynasty.utils.db
-import kotlinx.coroutines.*
-import android.content.ComponentName
-import android.provider.Settings
+import com.google.firebase.firestore.DocumentSnapshot
 
 
 class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
@@ -70,7 +60,7 @@ class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
         }
     }
 
-    override fun onNotesSelected(notes: Notes?) {
+    override fun onNotesSelected(notes: DocumentSnapshot) {
         viewModel.dateToDetail.value = notes
         this.findNavController().navigate(R.id.action_noteFragment_to_detailFragment)
     }

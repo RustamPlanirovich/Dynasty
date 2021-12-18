@@ -12,7 +12,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Query
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.notes.Notes
-import com.nauk0a.dynasty.utils.ToastFun
 import java.text.SimpleDateFormat
 
 class NotesAdapter(
@@ -41,7 +40,7 @@ class NotesAdapter(
 
 
             cardView?.setOnClickListener {
-                listener.onNotesSelected(notes)
+                listener.onNotesSelected(snapshot)
             }
             delBtn?.setOnClickListener {
                 listener.delCurrentItem(snapshot.id)
@@ -52,7 +51,7 @@ class NotesAdapter(
     }
 
     interface NotesAdapterListener {
-        fun onNotesSelected(notes: Notes?)
+        fun onNotesSelected(notes: DocumentSnapshot)
         fun delCurrentItem(id: String)
     }
 
