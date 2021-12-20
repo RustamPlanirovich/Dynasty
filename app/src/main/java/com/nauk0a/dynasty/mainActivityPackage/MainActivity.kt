@@ -1,8 +1,10 @@
 package com.nauk0a.dynasty.mainActivityPackage
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
@@ -99,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             binding?.bottomNav!!,
             Navigation.findNavController(this, R.id.nav_host_fragment)
         )
+        binding!!.checkInternetConnections.setOnClickListener {
+            val panelIntent = Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)
+            startActivity(panelIntent )
+        }
     }
 
     fun biometric() {

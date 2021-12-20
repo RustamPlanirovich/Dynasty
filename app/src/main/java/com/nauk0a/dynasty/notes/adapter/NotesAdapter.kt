@@ -12,13 +12,13 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Query
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.notes.Notes
+import com.nauk0a.dynasty.utils.ToastFun
 import java.text.SimpleDateFormat
 
 class NotesAdapter(
     query: Query,
     private val listener: NotesAdapterListener
 ) : FirestoreAdapter<NotesAdapter.NotesViewHolder>(query) {
-
 
     class NotesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -45,17 +45,17 @@ class NotesAdapter(
             delBtn?.setOnClickListener {
                 listener.delCurrentItem(snapshot.id)
             }
-
-
         }
+    }
+
+    fun del(id: String){
+        listener.delCurrentItem(id)
     }
 
     interface NotesAdapterListener {
         fun onNotesSelected(notes: DocumentSnapshot)
         fun delCurrentItem(id: String)
     }
-
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {

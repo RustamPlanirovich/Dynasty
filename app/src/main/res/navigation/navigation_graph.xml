@@ -56,4 +56,22 @@
             app:destination="@id/noteFragment"
             app:popUpTo="@id/navigation_graph" />
     </fragment>
+    <fragment
+        android:id="@+id/budgetFragment"
+        android:name="com.nauk0a.dynasty.budget.BudgetFragment"
+        android:label="budget_fragment"
+        tools:layout="@layout/budget_fragment" >
+        <action
+            android:id="@+id/action_budgetFragment_to_addNewBudgetFragment"
+            app:destination="@id/addNewBudgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewBudgetFragment"
+        android:name="com.nauk0a.dynasty.budget.addBudget.AddNewBudgetFragment"
+        android:label="add_new_budget_fragment"
+        tools:layout="@layout/add_new_budget_fragment" >
+        <action
+            android:id="@+id/action_addNewBudgetFragment_to_budgetFragment"
+            app:destination="@id/budgetFragment" />
+    </fragment>
 </navigation>

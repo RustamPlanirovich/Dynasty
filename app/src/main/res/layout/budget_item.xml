@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/name_of_the_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Название расхода"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/expense_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="1000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/name_of_the_expense"
+            app:layout_constraintStart_toStartOf="@+id/name_of_the_expense"
+            app:layout_constraintTop_toBottomOf="@+id/name_of_the_expense" />
+
+        <TextView
+            android:id="@+id/name_of_income_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="ЗП"
+            app:layout_constraintEnd_toStartOf="@+id/name_of_income_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expense_amount" />
+
+        <TextView
+            android:id="@+id/name_of_income_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Пособия"
+            app:layout_constraintEnd_toStartOf="@+id/name_of_income_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/name_of_income_1"
+            app:layout_constraintTop_toBottomOf="@+id/expense_amount" />
+
+        <TextView
+            android:id="@+id/name_of_income_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Аванс"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/name_of_income_2"
+            app:layout_constraintTop_toBottomOf="@+id/expense_amount" />
+
+        <TextView
+            android:id="@+id/amount_of_income_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="1000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/name_of_income_1"
+            app:layout_constraintStart_toStartOf="@+id/name_of_income_1"
+            app:layout_constraintTop_toBottomOf="@+id/name_of_income_1" />
+
+        <TextView
+            android:id="@+id/amount_of_income_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/name_of_income_2"
+            app:layout_constraintStart_toStartOf="@+id/name_of_income_2"
+            app:layout_constraintTop_toBottomOf="@+id/name_of_income_2" />
+
+        <TextView
+            android:id="@+id/amount_of_income_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/name_of_income_3"
+            app:layout_constraintStart_toStartOf="@+id/name_of_income_3"
+            app:layout_constraintTop_toBottomOf="@+id/name_of_income_3" />
+
+        <ImageView
+            android:id="@+id/edit_budget_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <TextView
+            android:id="@+id/budget_add_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
