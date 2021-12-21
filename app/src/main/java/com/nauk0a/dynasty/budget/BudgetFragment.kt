@@ -63,12 +63,22 @@ class BudgetFragment : Fragment(), BudgetAdapter.BudgetAdapterListener {
     }
 
     override fun onNotesSelected(notes: DocumentSnapshot) {
-//            viewModel.dateToDetail.value = notes
-//            this.findNavController().navigate(R.id.action_noteFragment_to_detailFragment)
+            viewModel.dateToDetailBudget.value = notes
+            this.findNavController().navigate(R.id.action_budgetFragment_to_detailBudgetFragment)
     }
 
     override fun delCurrentItem(id: String) {
-        TODO("Not yet implemented")
+
+            db.collection("budget").document(id)
+                .delete()
+//            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+//            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+
+    }
+
+    override fun onEditSelectedBudget(budget: DocumentSnapshot) {
+        viewModel.dateToDetailBudgetEdit.value = budget
+        this.findNavController().navigate(R.id.action_budgetFragment_to_editBudgetFragment)
     }
 
     override fun onStart() {

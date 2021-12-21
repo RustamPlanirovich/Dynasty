@@ -37,6 +37,8 @@ class BudgetAdapter(
         private val amountOfIncome3: TextView? = itemView.findViewById(R.id.amount_of_income_3)
         private val editBudgetItem: ImageView? = itemView.findViewById(R.id.edit_budget_item)
         private val budgetAddDate: TextView? = itemView.findViewById(R.id.budget_add_date)
+        private val delBtn: ImageView? = itemView.findViewById(R.id.del_budget_item_btn)
+        private val budgetItevCV: CardView? = itemView.findViewById(R.id.budget_card_view)
 
 
         @SuppressLint("SimpleDateFormat")
@@ -55,12 +57,15 @@ class BudgetAdapter(
             budgetAddDate?.text = format.format(datee)
 
 
-            editBudgetItem?.setOnClickListener {
+            budgetItevCV?.setOnClickListener {
                 listener.onNotesSelected(snapshot)
             }
-//            delBtn?.setOnClickListener {
-//                listener.delCurrentItem(snapshot.id)
-//            }
+            delBtn?.setOnClickListener {
+                listener.delCurrentItem(snapshot.id)
+            }
+            editBudgetItem?.setOnClickListener {
+                listener.onEditSelectedBudget(snapshot)
+            }
         }
     }
 
@@ -68,6 +73,7 @@ class BudgetAdapter(
     interface BudgetAdapterListener {
         fun onNotesSelected(notes: DocumentSnapshot)
         fun delCurrentItem(id: String)
+        fun onEditSelectedBudget(budget: DocumentSnapshot)
     }
 
 

@@ -66,5 +66,8 @@ class SettingFragment : Fragment() {
                 apply()
             }
         })
+        binding.incomeSectionBtn.setOnClickListener { btn ->
+            btn.findNavController().navigate(R.id.action_settingFragment_to_incomeSectionFragment)
+        }
     }
 }

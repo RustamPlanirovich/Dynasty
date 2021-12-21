@@ -43,15 +43,15 @@ class AddNewBudgetFragment : Fragment() {
         binding.addNewBudget.setOnClickListener {
             uiScope.launch(Dispatchers.IO) {
                 val budget = hashMapOf(
-                    "nameOfTheExpensetle" to "${binding.categoryNameEt.text}",
-                    "expenseAmount" to "${binding.categotySummEt.text}",
-                    "nameOfIncome1" to "${binding.categoryNameIncom1.text}",
-                    "nameOfIncome2" to "${binding.categoryNameIncom2.text}",
-                    "nameOfIncome3" to "${binding.categoryNameIncom3.text}",
-                    "amountOfIncome1" to "${binding.categoryNameIncomSumm1.text}",
-                    "amountOfIncome2" to "${binding.categoryNameIncomSumm2.text}",
-                    "amountOfIncome3" to "${binding.categoryNameIncomSumm3.text}",
-                    "budgetAddDate" to System.currentTimeMillis()
+                    "nameOfTheExpensetle"   to "${binding.categoryNameEt.text}",
+                    "expenseAmount"         to "${binding.categotySummEt.text}",
+                    "nameOfIncome1"         to "${binding.categoryNameIncom1.text}",
+                    "nameOfIncome2"         to "${binding.categoryNameIncom2.text}",
+                    "nameOfIncome3"         to "${binding.categoryNameIncom3.text}",
+                    "amountOfIncome1"       to "${binding.categoryNameIncomSumm1.text}",
+                    "amountOfIncome2"       to "${binding.categoryNameIncomSumm2.text}",
+                    "amountOfIncome3"       to "${binding.categoryNameIncomSumm3.text}",
+                    "budgetAddDate"         to System.currentTimeMillis()
                 )
                 db.collection("budget").document()
                     .set(budget)
