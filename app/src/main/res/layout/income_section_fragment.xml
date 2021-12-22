@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".income.IncomeSectionFragment">
+
+    <TextView
+        android:id="@+id/income_name_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ЗП"
+        android:layout_margin="@dimen/app_margin"
+        app:layout_constraintEnd_toStartOf="@+id/income_name_2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/income_name_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пособия"
+        android:layout_margin="@dimen/app_margin"
+        app:layout_constraintEnd_toStartOf="@+id/income_name_3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/income_name_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/income_name_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Аванс"
+        android:layout_margin="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/income_name_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/income_summ_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="32000"
+        app:layout_constraintEnd_toEndOf="@+id/income_name_1"
+        app:layout_constraintStart_toStartOf="@+id/income_name_1"
+        app:layout_constraintTop_toBottomOf="@+id/income_name_1" />
+
+    <TextView
+        android:id="@+id/income_summ_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12000"
+        app:layout_constraintEnd_toEndOf="@+id/income_name_2"
+        app:layout_constraintStart_toStartOf="@+id/income_name_2"
+        app:layout_constraintTop_toBottomOf="@+id/income_name_2" />
+
+    <TextView
+        android:id="@+id/income_summ_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20000"
+        app:layout_constraintEnd_toEndOf="@+id/income_name_3"
+        app:layout_constraintStart_toStartOf="@+id/income_name_3"
+        app:layout_constraintTop_toBottomOf="@+id/income_name_3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

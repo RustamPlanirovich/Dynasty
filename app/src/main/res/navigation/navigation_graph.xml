@@ -22,15 +22,81 @@
         <action
             android:id="@+id/action_noteFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_noteFragment_to_addNewNoteFragment"
+            app:destination="@id/addNewNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.nauk0a.dynasty.setting.SettingFragment"
         android:label="setting_fragment"
-        tools:layout="@layout/setting_fragment" />
+        tools:layout="@layout/setting_fragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/navigation_graph" />
+        <action
+            android:id="@+id/action_settingFragment_to_incomeSectionFragment"
+            app:destination="@id/incomeSectionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.nauk0a.dynasty.notes.detailView.DetailFragment"
         android:label="detail_fragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+        <action
+            android:id="@+id/action_detailFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewNoteFragment"
+        android:name="com.nauk0a.dynasty.notes.addNote.AddNewNoteFragment"
+        android:label="add_new_note_fragment"
+        tools:layout="@layout/add_new_note_fragment" >
+        <action
+            android:id="@+id/action_addNewNoteFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/budgetFragment"
+        android:name="com.nauk0a.dynasty.budget.BudgetFragment"
+        android:label="budget_fragment"
+        tools:layout="@layout/budget_fragment" >
+        <action
+            android:id="@+id/action_budgetFragment_to_addNewBudgetFragment"
+            app:destination="@id/addNewBudgetFragment" />
+        <action
+            android:id="@+id/action_budgetFragment_to_detailBudgetFragment"
+            app:destination="@id/detailBudgetFragment" />
+        <action
+            android:id="@+id/action_budgetFragment_to_editBudgetFragment"
+            app:destination="@id/editBudgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewBudgetFragment"
+        android:name="com.nauk0a.dynasty.budget.addBudget.AddNewBudgetFragment"
+        android:label="add_new_budget_fragment"
+        tools:layout="@layout/add_new_budget_fragment" >
+        <action
+            android:id="@+id/action_addNewBudgetFragment_to_budgetFragment"
+            app:destination="@id/budgetFragment" />
+        <action
+            android:id="@+id/action_addNewBudgetFragment_to_detailBudgetFragment"
+            app:destination="@id/detailBudgetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBudgetFragment"
+        android:name="com.nauk0a.dynasty.budget.DetailBudgetFragment"
+        android:label="DetailBudgetFragment" />
+    <fragment
+        android:id="@+id/editBudgetFragment"
+        android:name="com.nauk0a.dynasty.budget.EditBudgetFragment"
+        android:label="EditBudgetFragment" />
+    <fragment
+        android:id="@+id/incomeSectionFragment"
+        android:name="com.nauk0a.dynasty.income.IncomeSectionFragment"
+        android:label="income_section_fragment"
+        tools:layout="@layout/income_section_fragment" />
 </navigation>
