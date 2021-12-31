@@ -8,7 +8,13 @@ plugins {
 
 android {
     compileSdk 31
-
+    
+    def versionProps = new Properties()
+    def versionPropsFile = rootProject.file('version.properties')
+    if (versionPropsFile.exists()) {
+        versionProps.load(new FileInputStream(versionPropsFile))
+    }
+    
     defaultConfig {
         applicationId "com.nauk0a.dynasty"
         minSdk 29
@@ -46,8 +52,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility "1.8"
+        targetCompatibility "1.8"
     }
     kotlinOptions {
         jvmTarget = '1.8'
