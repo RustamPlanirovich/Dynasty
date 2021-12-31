@@ -1,4 +1,4 @@
-name: Dynasty_app_builder
+name: Test_and_build_signed_artifacts_on_release
 
 on:
   push:
@@ -50,8 +50,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: one
-          release_name: one
+          tag_name: One
+          release_name: One
           draft: false
           prerelease: false
 
