@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -20,6 +22,7 @@ import com.google.firebase.ktx.Firebase
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.databinding.ActivityMainBinding
 import com.nauk0a.dynasty.internet_connection.NetworkStatusTracker
+import com.nauk0a.dynasty.setting.SettingViewModel
 import com.nauk0a.dynasty.utils.APP_ACTIVITY
 import com.nauk0a.dynasty.utils.ToastFun
 import com.nauk0a.dynasty.utils.db
@@ -31,6 +34,7 @@ import java.util.concurrent.Executor
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var viewModelSetting: SettingViewModel
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding
@@ -48,10 +52,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
 
         val networkStatusTracker = NetworkStatusTracker(this)
         val viewModelFactory = VMFactory(networkStatusTracker)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        viewModelSetting = ViewModelProvider(this)[SettingViewModel::class.java]
 
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -66,8 +73,14 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.state.observe(this) { state ->
             when (state) {
-                MyState.Fetched -> binding?.noInternetConnection?.visibility = View.GONE
-                MyState.Error -> binding?.noInternetConnection?.visibility = View.VISIBLE
+                MyState.Fetched -> {
+                    binding?.noInternetConnection?.visibility = View.GONE
+                    binding?.display?.visibility = View.VISIBLE
+                }
+                MyState.Error -> {
+                    binding?.noInternetConnection?.visibility = View.VISIBLE
+                    binding?.display?.visibility = View.GONE
+                }
             }
         }
 
@@ -85,7 +98,12 @@ class MainActivity : AppCompatActivity() {
                 true -> biometricPrompt.authenticate(promptInfo)
             }
         }
-
+        viewModelSetting.sincFirebaseOnlain.observe(this, androidx.lifecycle.Observer {
+            when (it) {
+                true -> db.enableNetwork()
+                false -> db.disableNetwork()
+            }
+        })
         val firebaseOnlainSinc = prefs.getBoolean("APP_PREFERENCES_SINC", false)
         when (firebaseOnlainSinc) {
             true -> db.enableNetwork()
@@ -103,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         )
         binding!!.checkInternetConnections.setOnClickListener {
             val panelIntent = Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)
-            startActivity(panelIntent )
+            startActivity(panelIntent)
         }
     }
 

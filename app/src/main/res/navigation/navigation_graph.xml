@@ -89,14 +89,43 @@
     <fragment
         android:id="@+id/detailBudgetFragment"
         android:name="com.nauk0a.dynasty.budget.DetailBudgetFragment"
-        android:label="DetailBudgetFragment" />
+        android:label="DetailBudgetFragment" >
+        <action
+            android:id="@+id/action_detailBudgetFragment_to_currentPurchasesFragment"
+            app:destination="@id/currentPurchasesFragment" />
+        <action
+            android:id="@+id/action_detailBudgetFragment_to_futurePlaningFragment"
+            app:destination="@id/futurePlaningFragment" />
+        <action
+            android:id="@+id/action_detailBudgetFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editBudgetFragment"
         android:name="com.nauk0a.dynasty.budget.EditBudgetFragment"
-        android:label="EditBudgetFragment" />
+        android:label="EditBudgetFragment" >
+        <action
+            android:id="@+id/action_editBudgetFragment_to_budgetFragment"
+            app:destination="@id/budgetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/incomeSectionFragment"
         android:name="com.nauk0a.dynasty.income.IncomeSectionFragment"
         android:label="income_section_fragment"
         tools:layout="@layout/income_section_fragment" />
+    <fragment
+        android:id="@+id/currentPurchasesFragment"
+        android:name="com.nauk0a.dynasty.budget.historyAndPlaning.currentPurchases.CurrentPurchasesFragment"
+        android:label="current_purchases_fragment"
+        tools:layout="@layout/current_purchases_fragment" />
+    <fragment
+        android:id="@+id/futurePlaningFragment"
+        android:name="com.nauk0a.dynasty.budget.historyAndPlaning.planingForTheFuture.FuturePlaningFragment"
+        android:label="future_planing_fragment"
+        tools:layout="@layout/future_planing_fragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.nauk0a.dynasty.budget.historyAndPlaning.HistoryFragment"
+        android:label="history_fragment"
+        tools:layout="@layout/history_fragment" />
 </navigation>

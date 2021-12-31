@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Dynasty</string>
+    <string name="category_name">Категория</string>
+    <string name="edittext_null">0</string>
+    <string name="income_one">ЗП</string>
+    <string name="income_two">Пособия</string>
+    <string name="income_three">Аванс</string>
+
+
+    <string-array name="month">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 </resources>

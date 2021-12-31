@@ -11,8 +11,8 @@
         android:id="@+id/income_name_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ЗП"
         android:layout_margin="@dimen/app_margin"
+        android:text="ЗП"
         app:layout_constraintEnd_toStartOf="@+id/income_name_2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,8 @@
         android:id="@+id/income_name_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Пособия"
         android:layout_margin="@dimen/app_margin"
+        android:text="Пособия"
         app:layout_constraintEnd_toStartOf="@+id/income_name_3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/income_name_1"
@@ -33,8 +33,8 @@
         android:id="@+id/income_name_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Аванс"
         android:layout_margin="@dimen/app_margin"
+        android:text="Аванс"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/income_name_2"
@@ -44,7 +44,7 @@
         android:id="@+id/income_summ_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="32000"
+        android:text="@string/edittext_null"
         app:layout_constraintEnd_toEndOf="@+id/income_name_1"
         app:layout_constraintStart_toStartOf="@+id/income_name_1"
         app:layout_constraintTop_toBottomOf="@+id/income_name_1" />
@@ -53,7 +53,7 @@
         android:id="@+id/income_summ_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12000"
+        android:text="@string/edittext_null"
         app:layout_constraintEnd_toEndOf="@+id/income_name_2"
         app:layout_constraintStart_toStartOf="@+id/income_name_2"
         app:layout_constraintTop_toBottomOf="@+id/income_name_2" />
@@ -62,9 +62,45 @@
         android:id="@+id/income_summ_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20000"
+        android:text="@string/edittext_null"
         app:layout_constraintEnd_toEndOf="@+id/income_name_3"
         app:layout_constraintStart_toStartOf="@+id/income_name_3"
         app:layout_constraintTop_toBottomOf="@+id/income_name_3" />
 
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
+        android:text="История пополнений"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/income_summ_2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/budgetAddHistoryRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/app_margin"
+        android:orientation="vertical"
+        android:scrollbarStyle="outsideOverlay"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:listitem="@layout/budget_history_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/budget_edit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
+        android:backgroundTint="#394B59"
+        android:src="@drawable/ic_edit"
+        app:backgroundTint="#394B59"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

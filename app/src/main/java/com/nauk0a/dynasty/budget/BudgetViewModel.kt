@@ -8,4 +8,6 @@ class BudgetViewModel : ViewModel() {
 
     val dateToDetailBudget = MutableLiveData<DocumentSnapshot>()
     val dateToDetailBudgetEdit = MutableLiveData<DocumentSnapshot>()
+    val spinnerSelectedToAddNewBudget = MutableLiveData<Int>()
+    val expenseSumm = MutableLiveData<DocumentSnapshot>()
 }

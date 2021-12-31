@@ -1,7 +1,9 @@
 package com.nauk0a.dynasty.budget
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class DetailBudgetViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    val docid = MutableLiveData<String>()
 }

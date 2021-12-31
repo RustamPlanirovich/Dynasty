@@ -12,7 +12,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Query
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.notes.Notes
-import com.nauk0a.dynasty.utils.ToastFun
 import java.text.SimpleDateFormat
 
 class NotesAdapter(
@@ -22,8 +21,8 @@ class NotesAdapter(
 
     class NotesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val title: TextView? = itemView.findViewById(R.id.note_name_tv)
-        private val notetext: TextView? = itemView.findViewById(R.id.note_text_tv)
+        private val title: TextView = itemView.findViewById(R.id.note_name_tv)
+        private val notetext: TextView = itemView.findViewById(R.id.note_text_tv)
         private val datefb: TextView? = itemView.findViewById(R.id.note_date_tv)
         private val cardView: CardView? = itemView.findViewById(R.id.home_note_card_view)
         private val delBtn: ImageView? = itemView.findViewById(R.id.note_delete_btn)
@@ -34,9 +33,12 @@ class NotesAdapter(
             val notes: Notes? = snapshot.toObject(Notes::class.java)
             val datee = notes?.date
             val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+
+
             title?.text = notes?.title
             notetext?.text = notes?.notetext
             datefb?.text = format.format(datee)
+
 
 
             cardView?.setOnClickListener {
@@ -46,11 +48,11 @@ class NotesAdapter(
                 listener.delCurrentItem(snapshot.id)
             }
         }
+
     }
 
-    fun del(id: String){
-        listener.delCurrentItem(id)
-    }
+
+
 
     interface NotesAdapterListener {
         fun onNotesSelected(notes: DocumentSnapshot)
