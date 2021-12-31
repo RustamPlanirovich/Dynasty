@@ -11,7 +11,7 @@
         android:id="@+id/note_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +22,8 @@
         android:id="@+id/name_current_note_edit_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
         android:ems="10"
-        android:layout_margin="8dp"
         android:inputType="textPersonName"
         android:text="Name"
         android:visibility="gone"
@@ -35,34 +35,53 @@
         android:id="@+id/note_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="TextView"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/note_title_tv"
         app:layout_constraintStart_toStartOf="@+id/note_title_tv"
         app:layout_constraintTop_toBottomOf="@+id/note_title_tv" />
 
-    <TextView
-        android:id="@+id/note_text_tv"
-        android:layout_width="0dp"
+
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/app_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_date_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/note_date_tv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/note_text_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/app_margin"
+                android:autoLink="all"
+                android:clickable="true"
+                android:text="TextView"
+
+                />
+        </LinearLayout>
+    </ScrollView>
 
     <EditText
         android:id="@+id/text_current_note_edit_et"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:ems="10"
-        android:visibility="gone"
         android:gravity="top|start"
         android:inputType="textMultiLine|textNoSuggestions"
         android:text="TextView"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/save_edit_note_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,8 +91,8 @@
         android:id="@+id/edit_current_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
         android:src="@drawable/ic_edit"
-        android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,9 +100,9 @@
         android:id="@+id/save_edit_note_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
         android:text="Сохранить"
         android:visibility="gone"
-        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

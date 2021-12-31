@@ -1,13 +1,10 @@
 package com.nauk0a.dynasty.notes.detailView
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.text.Editable
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.isDigitsOnly
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -15,7 +12,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.databinding.DetailFragmentBinding
-import com.nauk0a.dynasty.databinding.NoteFragmentBinding
 import com.nauk0a.dynasty.notes.NoteViewModel
 import com.nauk0a.dynasty.notes.Notes
 import com.nauk0a.dynasty.utils.ToastFun
@@ -52,11 +48,13 @@ class DetailFragment : Fragment() {
             val notes: Notes? = it.toObject(Notes::class.java)
             val datee = notes?.date
             val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+
             binding.noteTitleTv.text = notes?.title
             binding.noteDateTv.text = format.format(datee)
             binding.noteTextTv.text = notes?.notetext
             currentNoteId = it.id
         })
+
 
         binding.editCurrentNote.setOnClickListener {
             binding.nameCurrentNoteEditEt.apply {
@@ -68,7 +66,7 @@ class DetailFragment : Fragment() {
                 setText(binding.noteTextTv.text)
             }
             binding.saveEditNoteBtn.visibility = View.VISIBLE
-            binding.noteTitleTv.visibility = View.GONE
+            binding.noteTitleTv.visibility = View.INVISIBLE
             binding.noteTextTv.visibility = View.GONE
             binding.noteDateTv.visibility = View.GONE
             binding.editCurrentNote.visibility = View.GONE

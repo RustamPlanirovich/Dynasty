@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.common.util.concurrent.Service
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.DocumentSnapshot
@@ -22,21 +21,27 @@ import com.google.firebase.ktx.Firebase
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.databinding.NoteFragmentBinding
 import com.nauk0a.dynasty.notes.adapter.NotesAdapter
-import com.nauk0a.dynasty.utils.ToastFun
 import com.nauk0a.dynasty.utils.db
-import java.util.*
+
+
+
+
+
+
 
 
 class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
 
 
-    private val viewModel: NoteViewModel by activityViewModels()
+    private  val viewModel: NoteViewModel by activityViewModels()
     private var _binding: NoteFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: NotesAdapter
     private lateinit var query: Query
 
     private lateinit var database: DatabaseReference
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,19 +54,24 @@ class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         db = Firebase.firestore
         database = Firebase.database.reference
 
         query = FirebaseFirestore.getInstance().collection("notes")
             .orderBy("date", Query.Direction.DESCENDING)
 
-
+        binding.notesListRv.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
+            if (oldScrollY < 0) binding.addNewNoteBtn.hide() else binding.addNewNoteBtn.show()
+        }
 
 
 
         adapter = NotesAdapter(query, this)
+        adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
         binding.notesListRv.setHasFixedSize(true)
-//        binding.notesListRv.itemAnimator = null
         binding.notesListRv.adapter = adapter
 
 
@@ -99,7 +109,9 @@ class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
                     //your code for deleting the item from database or from the list
                     val position = viewHolder.adapterPosition
 
-                    adapter.del(viewHolder.itemView.id.toString())
+
+
+
                     adapter.notifyItemRemoved(position)
                 }
             }
@@ -127,9 +139,25 @@ class NoteFragment : Fragment(), NotesAdapter.NotesAdapterListener {
     }
 
 
+    override fun onPause() {
+        super.onPause()
+        binding.notesListRv.layoutManager?.onSaveInstanceState()?.let { viewModel.saveRecyclerViewState(it) }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.stateInitialized()) {
+            binding.notesListRv.layoutManager?.onRestoreInstanceState(
+                viewModel.restoreRecyclerViewState()
+            )
+        }
+    }
+
+
     override fun onStart() {
         super.onStart()
         adapter.startListening()
+
     }
 
     override fun onStop() {

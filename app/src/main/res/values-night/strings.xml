@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="income_one">ЗП</string>
+    <string name="income_two">Пособия</string>
+    <string name="income_three">Аванс</string>
+</resources>

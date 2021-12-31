@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="Название категории"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/category_name_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/textView"
@@ -32,7 +32,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="Сумма расхода"
         app:layout_constraintEnd_toEndOf="@+id/category_name_et"
         app:layout_constraintStart_toStartOf="@+id/category_name_et"
@@ -52,7 +52,7 @@
         android:id="@+id/category_name_incom_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="ЗП"
         app:layout_constraintEnd_toStartOf="@+id/category_name_incom_2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,7 +63,7 @@
         android:id="@+id/category_name_incom_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="Пособия"
         app:layout_constraintEnd_toStartOf="@+id/category_name_incom_3"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,7 +74,7 @@
         android:id="@+id/category_name_incom_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:text="Аванс"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -85,7 +85,7 @@
         android:id="@+id/category_name_incom_summ_1"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/category_name_incom_1"
@@ -96,7 +96,7 @@
         android:id="@+id/category_name_incom_summ_2"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/category_name_incom_2"
@@ -107,34 +107,44 @@
         android:id="@+id/category_name_incom_summ_3"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/app_margin"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/category_name_incom_3"
         app:layout_constraintStart_toStartOf="@+id/category_name_incom_3"
         app:layout_constraintTop_toBottomOf="@+id/category_name_incom_3" />
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/edit_budget_summ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:layout_margin="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_name_incom_summ_2"
+        app:tabIndicatorHeight="0dp"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        android:backgroundTint="@color/my_night"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/app_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_name_incom_summ_2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="История изменений" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

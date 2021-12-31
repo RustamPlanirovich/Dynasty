@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".notes.addNote.AddNewNoteFragment" >
+    tools:context=".notes.addNote.AddNewNoteFragment">
 
     <TextView
         android:id="@+id/title_new_note_tv"
@@ -20,6 +20,7 @@
         android:id="@+id/title_text_et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_transparent"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,17 +36,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_text_et" />
 
+
     <EditText
         android:id="@+id/text_note_et"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/background_transparent"
         android:ems="10"
         android:gravity="top|start"
-        android:inputType="textMultiLine|textNoSuggestions"
         app:layout_constraintBottom_toTopOf="@+id/add_new_note_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_new_note_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/text_new_note_tv"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <Button
         android:id="@+id/add_new_note_btn"

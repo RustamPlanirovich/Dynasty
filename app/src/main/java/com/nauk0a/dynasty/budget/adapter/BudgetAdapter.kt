@@ -1,12 +1,13 @@
 package com.nauk0a.dynasty.budget.adapter
 
-import com.nauk0a.dynasty.notes.adapter.FirestoreAdapter
-
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,14 +15,13 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Query
 import com.nauk0a.dynasty.R
 import com.nauk0a.dynasty.budget.Budget
-import com.nauk0a.dynasty.notes.Notes
-import com.nauk0a.dynasty.utils.ToastFun
-import org.w3c.dom.Text
+import com.nauk0a.dynasty.budget.BudgetFragment
+import com.nauk0a.dynasty.notes.adapter.FirestoreAdapter
 import java.text.SimpleDateFormat
 
 class BudgetAdapter(
     query: Query,
-    private val listener: BudgetAdapterListener
+    private val listener: BudgetFragment
 ) : FirestoreAdapter<BudgetAdapter.BudgetViewHolder>(query) {
 
     class BudgetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,15 +39,17 @@ class BudgetAdapter(
         private val budgetAddDate: TextView? = itemView.findViewById(R.id.budget_add_date)
         private val delBtn: ImageView? = itemView.findViewById(R.id.del_budget_item_btn)
         private val budgetItevCV: CardView? = itemView.findViewById(R.id.budget_card_view)
+        private val progress: ProgressBar? = itemView.findViewById(R.id.budgetProgressBar)
 
 
-        @SuppressLint("SimpleDateFormat")
-        fun bind(snapshot: DocumentSnapshot, listener: BudgetAdapterListener) {
+        @SuppressLint("SimpleDateFormat", "ObjectAnimatorBinding")
+        fun bind(snapshot: DocumentSnapshot, listener: BudgetFragment) {
             val budget: Budget? = snapshot.toObject(Budget::class.java)
             val datee = budget?.budgetAddDate
             val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+
             nameOfTheExpensetle?.text = budget?.nameOfTheExpensetle
-            expenseAmount?.text = budget?.expenseAmount
+//            expenseAmount?.text = budget?.expenseAmount
             nameOfIncome1?.text = budget?.nameOfIncome1
             nameOfIncome2?.text = budget?.nameOfIncome2
             nameOfIncome3?.text = budget?.nameOfIncome3
@@ -56,6 +58,33 @@ class BudgetAdapter(
             amountOfIncome3?.text = budget?.amountOfIncome3
             budgetAddDate?.text = format.format(datee)
 
+
+            val summ = budget?.amountOfIncome1!!.toInt() +
+                    budget.amountOfIncome2!!.toInt() +
+                    budget.amountOfIncome3!!.toInt()
+//            progress?.progress = ((budget.expenseAmount!!.toDouble() / summ) * 100).toInt()
+           
+
+            ObjectAnimator.ofInt(
+                progress,
+                "progress",
+                ((budget.expenseAmount!!.toDouble() / summ) * 100).toInt()
+            )
+                .setDuration(1000)
+                .start()
+
+            val animator = ValueAnimator.ofInt(0, budget.expenseAmount.toString().toInt())
+            animator.duration = 1000
+            animator.addUpdateListener { animator ->
+                expenseAmount?.text = animator.animatedValue.toString()
+            }
+            animator.start()
+
+            if (budget?.expenseAmount.toInt() == 0){
+                budgetItevCV?.isEnabled = false
+                editBudgetItem?.isEnabled = false
+                delBtn?.isEnabled = false
+            }
 
             budgetItevCV?.setOnClickListener {
                 listener.onNotesSelected(snapshot)
@@ -89,3 +118,4 @@ class BudgetAdapter(
         getSnapshot(position)?.let { snapshot -> holder.bind(snapshot, listener) }
     }
 }
+
