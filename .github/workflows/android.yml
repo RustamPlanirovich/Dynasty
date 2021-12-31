@@ -29,7 +29,6 @@ jobs:
 
       - name: Run tests and build release artifacts
         run: |
-          ./gradlew test
           bash ./gradlew assembleRelease --stacktrace
           ./gradlew bundleRelease
       - name: Upload signed APK
